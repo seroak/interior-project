@@ -23,7 +23,8 @@ const TopFeatureSection = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <FeatureHeroText
-            title="평범한 원룸이 특별한 공간이 되는 순간"
+            title="평범한 원룸이 "
+            title2="특별한 공간이 되는 순간"
             description="공간의 온도와 분위기, 그리고 당신의 취향까지 단 한 장의 사진으로, 나만의 취향이 담긴 인테리어를 만나보세요"
           />
         </motion.div>

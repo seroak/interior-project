@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router";
 import DescriptionFeatureSection from "../components/FeatureSection/DescriptionFeatureSection";
 
 import TopFeatureSection from "../components/FeatureSection/TopFeatureSection";
 import ImgOverlayBlack60 from "../components/ImgOverlayBlack50";
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full h-full bg-black">
       <div className="flex flex-col flex-1 items-center w-full max-w-[1920px] min-w-[1400px] bg-gray-400 mx-auto">
@@ -17,7 +19,9 @@ const Home = () => {
               alt="icon"
               label="사진 업로드"
               iconPath="./photo-upload.svg"
-              onClick={() => {}}
+              onClick={() => {
+                navigate("/interior");
+              }}
             />
             <DescriptionFeatureSection
               title="스타일 선택"
@@ -27,7 +31,9 @@ const Home = () => {
               alt="icon"
               label="사진 업로드"
               iconPath="./photo-upload.svg"
-              onClick={() => {}}
+              onClick={() => {
+                navigate("/interior");
+              }}
             />
             <DescriptionFeatureSection
               title="결과 확인"
@@ -37,7 +43,9 @@ const Home = () => {
               alt="icon"
               label="사진 업로드"
               iconPath="./photo-upload.svg"
-              onClick={() => {}}
+              onClick={() => {
+                navigate("/interior");
+              }}
             />
           </div>
         </ImgOverlayBlack60>
