@@ -6,7 +6,7 @@ import { useState } from "react";
 const Interior = () => {
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(null);
 
-  const handleGenerateImage = (image: File, styleIndex: number) => {
+  const handleGenerateImage = (_image: File, _styleIndex: number) => {
     setGeneratedImageUrl(
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
     );
