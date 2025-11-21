@@ -37,6 +37,11 @@ const meta = {
       description: "StyleOptionGrid의 onSelect 이벤트",
       defaultValue: fn(),
     },
+    selectedOptionIndex: {
+      control: "number",
+      description: "StyleOptionGrid의 selectedOptionIndex 속성",
+      defaultValue: 0,
+    },
   },
   args: {
     onSelect: fn(),
@@ -52,29 +57,22 @@ export const Default: Story = {
       {
         title: "모던",
         description: "깔끔하고 세련된 현대적인 스타일",
-        isSelected: false,
-        onClick: fn(),
       },
       {
         title: "엔티크",
         description: "빈티지하고 고급스러운 클래식 스타일",
-        isSelected: false,
-        onClick: fn(),
       },
       {
         title: "플랜테리어",
         description: "자연스럽고 편안한 식물 중심 스타일",
-        isSelected: false,
-        onClick: fn(),
       },
       {
         title: "빈티지",
         description: "레트로하고 감성적인 빈티지 스타일",
-        isSelected: false,
-        onClick: fn(),
       },
     ],
     onSelect: fn(),
+    selectedOptionIndex: 0,
   },
 };
 
@@ -84,16 +82,13 @@ export const TwoOptions: Story = {
       {
         title: "모던",
         description: "깔끔하고 세련된 현대적인 스타일",
-        isSelected: false,
-        onClick: fn(),
       },
       {
         title: "엔티크",
         description: "빈티지하고 고급스러운 클래식 스타일",
-        isSelected: false,
-        onClick: fn(),
       },
     ],
     onSelect: fn(),
+    selectedOptionIndex: 0,
   },
 };

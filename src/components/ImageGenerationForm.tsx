@@ -49,15 +49,15 @@ const ImageGenerationForm = ({ onGenerate }: ImageGenerationFormProps) => {
   return (
     <div className="w-full max-w-[800px] mx-auto">
       <section className="mb-10">
-        <h2 className="text-xl font-bold text-gray-900 mb-6">이미지 업로드</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-10">이미지 업로드</h2>
         <ImgUpload onImageSelect={handleImageSelect} />
       </section>
-
+      <div className="w-full h-[1px] bg-gray-200 my-5" />
       <section className="mb-12">
         <h2 className="text-xl font-bold text-gray-900 mb-6">스타일 선택</h2>
         <StyleOptionGrid options={styleOptions} selectedOptionIndex={selectedStyleIndex} onSelect={handleStyleSelect} />
       </section>
-
+      <div className="w-full h-[1px] bg-gray-200 my-5" />
       <div className="mt-8">
         <RoundLongButton title="생성하기" onClick={handleGenerate} />
       </div>

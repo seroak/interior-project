@@ -20,10 +20,13 @@ const Interior = () => {
     <div className="w-full min-h-screen bg-white font-nanum-square">
       <InteriorHeroSection />
       <div className="max-w-[1700px] mx-auto px-4 py-[40px]">
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
           <div className="w-full lg:w-1/2">
             <ImageGenerationForm onGenerate={handleGenerateImage} />
           </div>
+
+          {/* Vertical Divider */}
+          <div className="hidden lg:block w-[1px] bg-gray-200 self-stretch" />
 
           <div className="w-full lg:w-1/2">
             <GeneratedImageResult imageUrl={generatedImageUrl ?? ""} onClose={handleCloseResult} />

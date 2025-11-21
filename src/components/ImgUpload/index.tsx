@@ -24,13 +24,9 @@ const ImgUpload = ({ onImageSelect, maxSizeMB, acceptedTypes }: ImgUploadProps) 
   } = useImageUpload({ onImageSelect, maxSizeMB, acceptedTypes });
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4 space-y-6">
+    <div className="w-full mx-auto ">
       {previewUrl ? (
-        <ImagePreview
-          previewUrl={previewUrl}
-          fileName={fileName}
-          onRemove={cancelUpload}
-        />
+        <ImagePreview previewUrl={previewUrl} fileName={fileName} onRemove={cancelUpload} />
       ) : !isUploading ? (
         <DropZone
           onDrop={handleDrop}
