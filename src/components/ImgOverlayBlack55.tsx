@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ImgOverlayBlack55Props {
   children: React.ReactNode;
   className?: string;

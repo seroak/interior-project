@@ -11,7 +11,9 @@ const meta = {
 
   tags: ["autodocs"],
 
-  argTypes: {},
+  argTypes: {
+    delay: { control: "number", description: "AnimationBeforeAfter의 delay 속성", defaultValue: 0 },
+  },
   args: {},
 } satisfies Meta<typeof AnimationBeforeAfter>;
 

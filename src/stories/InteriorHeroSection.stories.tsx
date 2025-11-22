@@ -1,16 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import InteriorHeroSection  from "../components/InteriorHeroSection";
+import InteriorHeroSection from "../components/FeatureSection/InteriorHeroSection";
 
 const meta = {
-  title: "Components/InteriorHeroSection",
+  title: "FeatureSection/InteriorHeroSection",
   component: InteriorHeroSection,
   parameters: {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-  args: {
-   
-  },
+  args: {},
 } satisfies Meta<typeof InteriorHeroSection>;
 
 export default meta;

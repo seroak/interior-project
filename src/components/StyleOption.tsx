@@ -9,7 +9,7 @@ const StyleOption = ({ title, description, isSelected, onClick }: StyleOptionPro
   return (
     <div
       onClick={onClick}
-      className={`flex flex-col gap-[10px] px-[32px] py-[40px] rounded-[10px] border-2 ${borderColor}`}
+      className={`flex flex-col gap-[10px] px-[32px] py-[40px] rounded-[10px] border-2 h-full ${borderColor}`}
     >
       <p className="text-[22px] font-extrabold">{title}</p>
       <p className="text-[18px] font-regular">{description}</p>

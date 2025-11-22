@@ -22,7 +22,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   argTypes: {
-    children: { control: "text", description: "Content to be overlaid" },
+    children: { control: "object", description: "ImgOverlayBlack55의 children 속성", defaultValue: "사진 업로드" },
     className: { control: "text", description: "Additional CSS classes" },
   },
 } satisfies Meta<typeof ImgOverlayBlack55>;
@@ -53,12 +53,8 @@ export const WithTextContent: Story = {
           className="w-full h-full object-cover"
         />
         <div className="absolute z-20 inset-0 flex flex-col items-center justify-center text-center gap-[30px]">
-          <h1 className="text-white text-[50px] font-extrabold">
-            Title Here
-          </h1>
-          <p className="text-white text-[22px] font-regular">
-            Description text goes here.
-          </p>
+          <h1 className="text-white text-[50px] font-extrabold">Title Here</h1>
+          <p className="text-white text-[22px] font-regular">Description text goes here.</p>
         </div>
       </>
     ),

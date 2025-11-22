@@ -25,6 +25,7 @@ const meta = {
 
   argTypes: {
     children: { control: "object", description: "ImgOverlayBlack50의 children 속성", defaultValue: "사진 업로드" },
+    className: { control: "text", description: "Additional CSS classes" },
   },
   args: {},
 } satisfies Meta<typeof ImgOverlayBlack50>;

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const TopFeatureSection = () => {
   const navigate = useNavigate();
   return (
-    <ImgOverlayBlack60>
+    <ImgOverlayBlack60 className="h-full">
       <div className="w-full h-full flex items-center justify-center">
         <div className="w-full h-full">
           <AnimationBeforeAfter delay={1} />

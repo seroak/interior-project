@@ -1,4 +1,4 @@
-import ImgOverlayBlack55 from "./ImgOverlayBlack55";
+import ImgOverlayBlack55 from "../ImgOverlayBlack55";
 
 const InteriorHeroSection = () => {
   return (

@@ -1,4 +1,4 @@
-import InteriorHeroSection from "../components/InteriorHeroSection";
+import InteriorHeroSection from "../components/FeatureSection/InteriorHeroSection";
 import ImageGenerationForm from "../components/ImageGenerationForm";
 import GeneratedImageResult from "../components/GeneratedImageResult";
 import { useState } from "react";
