@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { MemoryRouter } from "react-router";
 
-import TopFeatureSection from "../components/FeatureSection/TopFeatureSection";
+import TopFeatureSection from "../features/home/FeatureSection/TopFeatureSection";
 
 const meta = {
   title: "FeatureSection/TopFeatureSection",

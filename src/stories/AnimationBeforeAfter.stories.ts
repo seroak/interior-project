@@ -12,7 +12,8 @@ const meta = {
   tags: ["autodocs"],
 
   argTypes: {
-    delay: { control: "number", description: "AnimationBeforeAfter의 delay 속성", defaultValue: 0 },
+    afterImgPath: { control: "text", description: "변경전 이미지", defaultValue: "/before.webp" },
+    beforeImgPath: { control: "text", description: "변경후 이미지", defaultValue: "/after.webp" },
   },
   args: {},
 } satisfies Meta<typeof AnimationBeforeAfter>;
@@ -20,4 +21,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const One: Story = {};
+export const One: Story = {
+  args: {
+    afterImgPath: "/before.webp",
+    beforeImgPath: "/after.webp",
+  },
+};

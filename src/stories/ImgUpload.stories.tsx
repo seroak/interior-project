@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import ImgUpload from "../components/ImgUpload";
+import ImgUpload from "../features/interior/ImgUpload";
 import { fn } from "storybook/test";
 
 const meta = {
@@ -47,6 +47,8 @@ const meta = {
   },
   args: {
     onImageSelect: fn(),
+    previewUrl: null,
+    onClear: fn(),
   },
 } satisfies Meta<typeof ImgUpload>;
 
@@ -56,6 +58,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     onImageSelect: fn(),
+    previewUrl: null,
+    onClear: fn(),
     maxSizeMB: 10,
     acceptedTypes: ["image/jpeg", "image/png", "image/webp"],
   },
@@ -64,6 +68,8 @@ export const Default: Story = {
 export const SmallSize: Story = {
   args: {
     onImageSelect: fn(),
+    previewUrl: null,
+    onClear: fn(),
     maxSizeMB: 5,
     acceptedTypes: ["image/jpeg", "image/png", "image/webp"],
   },
@@ -72,8 +78,10 @@ export const SmallSize: Story = {
 export const JPEGOnly: Story = {
   args: {
     onImageSelect: fn(),
+    previewUrl: null,
+    onClear: fn(),
+
     maxSizeMB: 10,
     acceptedTypes: ["image/jpeg"],
   },
 };
-

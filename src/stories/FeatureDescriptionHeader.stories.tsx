@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { FeatureDescriptionHeader } from "../components/FeatureSection/FeatureDescriptionHeader";
+import { FeatureDescriptionHeader } from "../features/home/FeatureSection/FeatureDescriptionHeader";
 
 const meta = {
   title: "FeatureSection/FeatureDescriptionHeader",
@@ -67,4 +67,3 @@ export const ResultCheck: Story = {
     numberText: "03",
   },
 };
-

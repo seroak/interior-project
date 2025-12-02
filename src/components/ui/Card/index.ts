@@ -1,0 +1,1 @@
+export { WhiteOpacityCard } from "./WhiteOpacityCard";

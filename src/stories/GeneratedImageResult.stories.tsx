@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import GeneratedImageResult from "../components/GeneratedImageResult";
+import GeneratedImageResult from "../features/interior/GeneratedImageResult";
 import { fn } from "storybook/test";
 
 const meta = {
@@ -10,11 +10,18 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    imageUrl: { control: "text", description: "GeneratedImageResult의 imageUrl 속성", defaultValue: "" },
-    onClose: { action: "onClose", description: "GeneratedImageResult의 onClose 이벤트", defaultValue: fn() },
+    originalImageUrl: { control: "text", description: "원본 이미지 URL" },
+    generatedImageUrl: { control: "text", description: "생성된 이미지 URL" },
+    onClose: { action: "onClose", description: "닫기 이벤트" },
   },
   args: {
-    imageUrl: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+    originalImageUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2000&auto=format&fit=crop",
+    generatedImageUrl: [
+      {
+        title: "Modern",
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      },
+    ],
     onClose: fn(),
   },
 } satisfies Meta<typeof GeneratedImageResult>;
@@ -24,6 +31,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    imageUrl: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+    originalImageUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2000&auto=format&fit=crop",
+    generatedImageUrl: [
+      {
+        title: "Modern",
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      },
+    ],
   },
 };

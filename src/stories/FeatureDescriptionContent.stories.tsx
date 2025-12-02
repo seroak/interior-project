@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { FeatureDescriptionContent } from "../components/FeatureSection/FeatureDescriptionContent";
+import { FeatureDescriptionContent } from "../features/home/FeatureSection/FeatureDescriptionContent";
 import { fn } from "storybook/test";
 
 const meta = {

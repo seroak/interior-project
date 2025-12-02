@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import InteriorHeroSection from "../components/FeatureSection/InteriorHeroSection";
+import InteriorHeroSection from "../features/home/FeatureSection/InteriorHeroSection";
 
 const meta = {
   title: "FeatureSection/InteriorHeroSection",
