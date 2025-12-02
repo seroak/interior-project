@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { StyleOptionGrid } from "../features/interior/StyleOptionGrid/StyleOptionGrid";
+import { StyleOptionGrid } from "../features/interior/StyleOptionGrid";
 import { fn } from "storybook/test";
 
 const meta = {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import GeneratedImageResult from "../features/interior/GeneratedImageResult";
+import { GeneratedImageResult } from "../features/interior/GeneratedImageResult";
 import { fn } from "storybook/test";
 
 const meta = {

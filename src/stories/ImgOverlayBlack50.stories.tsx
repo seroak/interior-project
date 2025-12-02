@@ -35,6 +35,6 @@ type Story = StoryObj<typeof meta>;
 
 export const ImgOverlayBlack50Story: Story = {
   args: {
-    children: <AnimationBeforeAfter />,
+    children: <AnimationBeforeAfter beforeImgPath="/before.webp" afterImgPath="/after.webp" />,
   },
 };
