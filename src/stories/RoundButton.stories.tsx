@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { RoundButton } from "../components/RoundButton";
+import { RoundButton } from "../components/ui/Button/RoundButton";
 import { fn } from "storybook/test";
 
 const meta = {

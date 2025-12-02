@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import RoundLongButton from "../components/RoundLongButton";
+import RoundLongButton from "../components/ui/Button/RoundLongButton";
 import { fn } from "storybook/test";
 
 const meta = {
@@ -52,4 +52,3 @@ export const ActionButton: Story = {
     onClick: fn(),
   },
 };
-

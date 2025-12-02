@@ -9,10 +9,10 @@ export const StyleOption = ({ title, description, isSelected, onClick }: StyleOp
   return (
     <div
       onClick={onClick}
-      className={`flex flex-col gap-[10px] px-[32px] py-[40px] rounded-[10px] border-2 h-full ${borderColor}`}
+      className={`flex flex-col gap-[10px] px-[32px] py-[40px] rounded-[10px] border-2 ${borderColor}`}
     >
       <p className="text-[22px] font-extrabold">{title}</p>
-      <p className="text-[18px] font-regular">{description}</p>
+      <p className="text-[15px] font-regular">{description}</p>
     </div>
   );
 };

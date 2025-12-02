@@ -27,7 +27,7 @@ export const TopFeatureSection = () => {
           />
         </motion.div>
         <motion.div
-          className="w-[239px]"
+          className="w-[200px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
