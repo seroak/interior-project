@@ -10,7 +10,13 @@ export const TopFeatureSection = () => {
     <ImgOverlayBlack60 className="h-full">
       <div className="w-full h-[780px] flex items-center justify-center">
         <div className="w-full h-[780px] object-cover">
-          <img className="w-full h-full object-cover" src="main_bg.png" alt="bg-img" />
+          <img
+            className="w-full h-full object-cover"
+            src="main_bg.webp"
+            alt="bg-img"
+            fetchPriority="high"
+            loading="eager"
+          />
         </div>
       </div>
 
