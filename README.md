@@ -1,51 +1,81 @@
-# Interior AI Design Project
+# 🏠 AI Interior Styling Service
 
-AI 기술을 활용하여 사용자가 업로드한 방 사진을 기반으로 새로운 인테리어 디자인을 제안해주는 웹 애플리케이션입니다.
-
-## 🚀 주요 기능
-
-- **이미지 업로드**: 사용자의 방 사진을 쉽게 업로드할 수 있습니다.
-- **스타일 선택**: 원하는 인테리어 스타일(모던, 미니멀, 북유럽 등)을 선택할 수 있습니다.
-- **AI 디자인 생성**: 선택한 스타일에 맞춰 AI가 새로운 인테리어 이미지를 생성합니다.
-- **비포/애프터 비교**: 원본 사진과 생성된 디자인을 직관적으로 비교할 수 있습니다.
+사용자가 업로드한 방 사진을 AI 기술을 활용하여 원하는 인테리어 스타일로 변환해주는 웹 서비스입니다.
 
 ## 🛠 Tech Stack
 
-- **Core**: React, TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Component Development**: Storybook
-- **Linting**: ESLint
+| Category             | Technology                  |
+| -------------------- | --------------------------- |
+| **Core**             | React 19, TypeScript, Vite  |
+| **Styling**          | Tailwind CSS, Framer Motion |
+| **State Management** | Zustand                     |
+| **Testing/CDD**      | Storybook, Vitest           |
+| **Package Manager**  | npm                         |
 
-## 📦 Getting Started
+## Key Features
 
-### 설치 및 실행
+- ** 이미지 업로드**
 
+  - 드래그 앤 드롭을 지원하는 직관업로드 UI
+  - 업로드 즉시 미리보기 제공 및 로딩 상태 시각화
 
-1. **의존성 설치**
-   ```bash
-   npm install
-   ```
+- ** Before / After 비교 (인터랙티브)**
+  - 변환 전/후 이미지를 슬라이더로 직접 움직이며 비교 가능
+  - `Framer Motion`을 활용한 부드러운 인터랙션 구현
 
-2. **개발 서버 실행**
-   ```bash
-   npm run dev
-   ```
+## 성능 개선 사항
 
-3. **Storybook 실행** (컴포넌트 개발 및 문서 확인)
-   ```bash
-   npm run storybook
-   ```
+### 1. 이미지 로딩 성능 최적화 (LCP 개선)
 
-## 📂 Project Structure
+**문제 상황**:
+배포 후 메인 페이지의 고해상도 배너 이미지 로딩이 지연되는 현상이 발생.
+
+**해결 과정**:
+
+1. **이미지 포맷 최적화**: `ffmpeg`를 사용하여 기존 PNG 이미지를 차세대 포맷인 **WebP**로 변환
+2. **브라우저 렌더링 우선순위 조정**:
+   - `index.html`에 `<link rel="preload">` 태그를 추가하여 리소스 다운로드 시점을 앞당겼습니다.
+   - `<img>` 태그에 `fetchPriority="high"` 및 `loading="eager"` 속성을 명시하여 브라우저가 해당 이미지를 최우선으로 처리하도록 했습니다.
+
+### 2. 기능 단위 폴더 구조 적용
+
+**문제 상황**:
+컴포넌트와 기능이 혼재되어 있어 코드 응집도가 떨어지고 유지보수성이 떨어지는 현상이 발생.
+
+**해결**:
+기능 단위로 폴더 구조를 재편하는 기능 단위 폴더 구조 도입.
+
+예시
+
+- `src/features/`: 도메인 비즈니스 로직을 포함한 컴포넌트 그룹
+- `src/components/shared/`: 도메인과 무관한 순수 UI 컴포넌트 .
+
+##Folder Structure
 
 ```
 src/
-├── components/        # 재사용 가능한 UI 컴포넌트
-│   ├── ImgUpload/     # 이미지 업로드 관련 컴포넌트
-│   └── ...
-├── pages/            # 페이지 단위 컴포넌트
-├── stories/          # Storybook 스토리 파일
-├── App.tsx           # 메인 앱 컴포넌트
-└── main.tsx          # 진입점
+├── components/      # 재사용 가능한 공통 UI 컴포넌트
+│   ├── shared/      # 도메인 무관한 순수 컴포넌트 (Button, Layout 등)
+│   └── ui/          # 디자인 시스템 기반의 기초 UI 요소
+├── features/        # 도메인별 기능 단위 컴포넌트 그룹
+│   ├── home/        # 메인 페이지 관련 기능
+│   └── interior/    # 인테리어 생성 관련 핵심 기능 (업로드, 스타일 선택 등)
+├── hooks/           # 전역적으로 사용되는 커스텀 훅
+├── pages/           # 라우팅 단위의 페이지 컴포넌트
+├── stores/          # Zustand 전역 상태 관리
+├── stories/         # Storybook 스토리 파일
+└── utils/           # 유틸리티 함수 및 상수
+```
+
+## How to Run
+
+```bash
+# 1. 저장소 클론
+git clone https://github.com/seroak/interior-project.git
+
+# 2. 의존성 패키지 설치
+npm install
+
+# 3. 개발 서버 실행
+npm run dev
 ```
