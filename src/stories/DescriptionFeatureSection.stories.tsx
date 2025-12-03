@@ -2,9 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { DescriptionFeatureSection } from "../features/home/FeatureSection/DescriptionFeatureSection";
 import { fn } from "storybook/test";
+import { BrowserRouter } from "react-router-dom";
 
 const meta = {
-  title: "FeatureSection/RandingFeatureSection",
+  title: "FeatureSection/DescriptionFeatureSection",
   component: DescriptionFeatureSection,
   parameters: {
     layout: "centered",
@@ -20,25 +21,27 @@ const meta = {
           justifyContent: "center",
         }}
       >
-        <Story />
+        <BrowserRouter>
+          <Story />
+        </BrowserRouter>
       </div>
     ),
   ],
   tags: ["autodocs"],
 
   argTypes: {
-    title: { control: "text", description: "RandingFeatureSection의 title 속성", defaultValue: "title" },
+    title: { control: "text", description: "DescriptionFeatureSection의 title 속성", defaultValue: "title" },
     description: {
       control: "text",
-      description: "RandingFeatureSection의 description 속성",
+      description: "DescriptionFeatureSection의 description 속성",
       defaultValue: "description",
     },
-    numberText: { control: "text", description: "RandingFeatureSection의 numberText 속성", defaultValue: "1" },
-    label: { control: "text", description: "RandingFeatureSection의 label 속성", defaultValue: "label" },
-    iconPath: { control: "text", description: "RandingFeatureSection의 iconPath 속성", defaultValue: "" },
-    onClick: { action: "onClick", description: "RandingFeatureSection의 onClick 이벤트", defaultValue: fn() },
-    imgPath: { control: "text", description: "RandingFeatureSection의 imgPath 속성", defaultValue: "" },
-    alt: { control: "text", description: "RandingFeatureSection의 alt 속성", defaultValue: "icon" },
+    numberText: { control: "text", description: "DescriptionFeatureSection의 numberText 속성", defaultValue: "1" },
+    label: { control: "text", description: "DescriptionFeatureSection의 label 속성", defaultValue: "label" },
+    iconPath: { control: "text", description: "DescriptionFeatureSection의 iconPath 속성", defaultValue: "" },
+    onClick: { action: "onClick", description: "DescriptionFeatureSection의 onClick 이벤트", defaultValue: fn() },
+    imgPath: { control: "text", description: "DescriptionFeatureSection의 imgPath 속성", defaultValue: "" },
+    alt: { control: "text", description: "DescriptionFeatureSection의 alt 속성", defaultValue: "icon" },
   },
   args: { onClick: fn() },
 } satisfies Meta<typeof DescriptionFeatureSection>;
