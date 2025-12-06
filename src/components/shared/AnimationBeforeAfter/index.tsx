@@ -21,7 +21,7 @@ const AnimationBeforeAfter = ({ beforeImgPath, afterImgPath, className }: Props)
       <img
         src={beforeImgPath}
         alt="before"
-        className="w-full h-full object-contain"
+        className="w-full h-full object-cover"
         style={{ willChange: "transform" }}
       />
 

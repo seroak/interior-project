@@ -23,6 +23,7 @@ export const DropZone = ({ onDrop, onDragOver, onClick, onFileSelect, fileInputR
         className="hidden"
         onChange={onFileSelect}
         accept={acceptedTypes.join(",")}
+        data-testid="file-input"
       />
 
       <div className="w-[100px] h-[100px] rounded-[20px] flex items-center justify-center">

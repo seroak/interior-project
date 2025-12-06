@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { FeatureDescriptionContent } from "../features/home/FeatureSection/FeatureDescriptionContent";
-import { fn } from "storybook/test";
-
+import { fn, userEvent, expect } from "storybook/test";
 const meta = {
   title: "FeatureSection/FeatureDescriptionContent",
   component: FeatureDescriptionContent,
@@ -66,6 +65,12 @@ export const PhotoUpload: Story = {
     label: "사진 업로드",
     iconPath: "./photo-upload.svg",
     onClick: fn(),
+  },
+  play: async ({ canvas, args }) => {
+    const allTexts = await canvas.findAllByText("사진 업로드");
+    const buttonTextEl = allTexts[1];
+    await userEvent.click(buttonTextEl.parentElement!);
+    expect(args.onClick).toHaveBeenCalled();
   },
 };
 

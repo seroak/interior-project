@@ -4,3 +4,4 @@ export { FeatureDescriptionHeader } from "./FeatureSection/FeatureDescriptionHea
 export { FeatureHeroText } from "./FeatureSection/FeatureHeroText";
 export { InteriorHeroSection } from "./FeatureSection/InteriorHeroSection";
 export { TopFeatureSection } from "./FeatureSection/TopFeatureSection";
+export { FeatureDescriptionSection } from "./FeatureSection/FeatureDescriptionSection";

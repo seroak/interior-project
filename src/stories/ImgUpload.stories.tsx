@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { ImgUpload } from "../features/interior/ImgUpload";
-import { fn } from "storybook/test";
+import { fn, userEvent, expect } from "storybook/test";
 
 const meta = {
   title: "Components/ImgUpload",
@@ -75,6 +75,19 @@ export const Default: Story = {
   args: {
     maxSizeMB: 10,
     acceptedTypes: ["image/jpeg", "image/png", "image/webp"],
+  },
+  play: async ({ args, canvas }) => {
+    // 파일 입력 요소 찾기
+    const fileInput = canvas.getByTestId("file-input");
+
+    // 테스트용 파일 생성
+    const file = new File(["dummy content"], "test.png", { type: "image/png" });
+
+    // 파일 업로드 시뮬레이션
+    await userEvent.upload(fileInput, file);
+
+    // onImageSelect 핸들러가 호출되었는지 확인
+    await expect(args.onImageSelect).toHaveBeenCalled();
   },
 };
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { StyleOption } from "../features/interior/StyleOptionGrid/StyleOption";
-import { fn } from "storybook/test";
+import { fn, userEvent, expect } from "storybook/test";
 
 const meta = {
   title: "Components/StyleOption",
@@ -63,6 +63,16 @@ export const Unselected: Story = {
     description: "깔끔하고 세련된 현대적인 스타일",
     isSelected: false,
     onClick: fn(),
+  },
+  play: async ({ canvas, args }) => {
+    // 텍스트로 요소 찾기 (StyleOption은 title을 렌더링함)
+    const option = canvas.getByText("모던");
+
+    // 클릭 시뮬레이션
+    await userEvent.click(option);
+
+    // onClick 핸들러가 호출되었는지 확인
+    await expect(args.onClick).toHaveBeenCalled();
   },
 };
 
