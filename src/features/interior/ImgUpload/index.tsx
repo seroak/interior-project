@@ -50,7 +50,7 @@ export const ImgUpload = ({
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full h-full"
           >
-            <img src={previewUrl} alt="preview" className="w-full h-full object-cover" />
+            <img src={previewUrl} alt="preview" className="w-full h-full object-contain" />
           </motion.div>
           <button
             onClick={onClear}

@@ -6,6 +6,12 @@ interface StyleOption {
 }
 
 interface StyleOptionsState {
+  styleIndexObject: {
+    minimalist: number;
+    scandinavian: number;
+    modern: number;
+    vintage: number;
+  };
   styleOptions: StyleOption[];
   selectedStyleTitle: string;
   selectedStyleIndex: number;
@@ -14,25 +20,31 @@ interface StyleOptionsState {
 }
 
 export const useStyleOptions = create<StyleOptionsState>((set) => ({
+  styleIndexObject: {
+    minimalist: 0,
+    scandinavian: 1,
+    modern: 2,
+    vintage: 3,
+  },
   styleOptions: [
     {
-      title: "Modern",
+      title: "Minimalist",
       description: "직선과 미니멀한 색감으로 구성된 세련되고 깔끔한 분위기",
     },
     {
-      title: "Antique",
-      description: "클래식한 가구와 따뜻한 컬러로 시간의 깊이를 담은 공간",
+      title: "Scandinavian",
+      description: "직선과 미니멀한 색감으로 구성된 세련되고 깔끔한 분위기",
     },
     {
-      title: "Planterior",
-      description: "식물과 자연 소재를 중심으로 한 내추럴하고 편안한 공간",
+      title: "Modern",
+      description: "직선과 미니멀한 색감으로 구성된 세련되고 깔끔한 분위기",
     },
     {
       title: "Vintage",
       description: "과거의 감성과 낡은 질감을 현대적으로 재해석한 개성 있는 스타일",
     },
   ],
-  selectedStyleTitle: "Modern",
+  selectedStyleTitle: "Minimalist",
   selectedStyleIndex: 0,
   setSelectedStyleTitle: (title: string) => set({ selectedStyleTitle: title }),
   setSelectedStyleIndex: (index: number) => set({ selectedStyleIndex: index }),

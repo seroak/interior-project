@@ -1,22 +1,21 @@
 import AnimationBeforeAfter from "@/components/shared/AnimationBeforeAfter";
-import { type GeneratedImageResultProps as GeneratedImage } from "../../types";
 import { useStyleOptions } from "@/store/useStyleOptions";
-
 interface GeneratedImageResultProps {
   originalImageUrl: string;
-  generatedImageUrl: GeneratedImage[];
+  generatedImageUrl: Record<string, string>;
   onClose: () => void;
 }
 
 export const GeneratedImageResult = ({ originalImageUrl, generatedImageUrl, onClose }: GeneratedImageResultProps) => {
-  const selectedStyleIndex = useStyleOptions((state) => state.selectedStyleIndex);
+  const selectedStyleTitle = useStyleOptions((state) => state.selectedStyleTitle);
+  const currentImage = generatedImageUrl[selectedStyleTitle.toLowerCase()];
   return (
     <div className="w-full mx-auto flex flex-col items-center">
-      {generatedImageUrl && generatedImageUrl.length > 0 && (
+      {currentImage && (
         <div className="relative w-full max-w-[1000px] h-[600px] flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden border-2 border-gray-200">
           <AnimationBeforeAfter
             beforeImgPath={originalImageUrl}
-            afterImgPath={generatedImageUrl[selectedStyleIndex].image}
+            afterImgPath={currentImage}
             className="w-full h-full"
           />
           <button

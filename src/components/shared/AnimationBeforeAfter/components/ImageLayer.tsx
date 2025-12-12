@@ -15,7 +15,7 @@ export const ImageLayer = ({ clipPath, imageSrc, alt }: ImageLayerProps) => {
         willChange: "clip-path",
       }}
     >
-      <img src={imageSrc} alt={alt} className="w-full h-full object-cover" />
+      <img src={imageSrc} alt={alt} className="w-full h-full object-contain" />
     </motion.div>
   );
 };

@@ -9,6 +9,7 @@ export const ImageGenerationForm = () => {
     generatedImageUrls,
     previewUrl,
     isGenerating,
+    isFetchingImages,
     handleImageSelect,
     handleClearImage,
     handleImgGenerate,
@@ -18,7 +19,7 @@ export const ImageGenerationForm = () => {
   return (
     <div className="w-full max-w-[1200px] mx-auto">
       <section className="mb-10">
-        {isGenerating ? (
+        {isGenerating || isFetchingImages ? (
           <div className="w-full h-[800px] flex items-center ">
             <LoadingSpinner />
           </div>
