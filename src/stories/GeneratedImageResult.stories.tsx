@@ -16,12 +16,12 @@ const meta = {
   },
   args: {
     originalImageUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2000&auto=format&fit=crop",
-    generatedImageUrl: [
-      {
-        title: "Modern",
-        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
-      },
-    ],
+    generatedImageUrl: {
+      minimalist: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      scandinavian: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      modern: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      vintage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+    },
     onClose: fn(),
   },
 } satisfies Meta<typeof GeneratedImageResult>;
@@ -32,11 +32,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     originalImageUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2000&auto=format&fit=crop",
-    generatedImageUrl: [
-      {
-        title: "Modern",
-        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
-      },
-    ],
+    generatedImageUrl: {
+      minimalist: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      scandinavian: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      modern: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+      vintage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+    },
   },
 };
