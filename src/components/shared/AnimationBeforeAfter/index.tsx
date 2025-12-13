@@ -13,7 +13,7 @@ const AnimationBeforeAfter = ({ beforeImgPath, afterImgPath, className }: Props)
   return (
     <div
       ref={containerRef}
-      className={`${className || "mx-auto overflow-hidden rounded-lg shadow-2xl"} z-0 relative select-none`}
+      className={`${className} z-0 relative select-none`}
       style={{ willChange: "transform" }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}

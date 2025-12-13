@@ -13,11 +13,13 @@ export const GeneratedImageResult = ({ originalImageUrl, generatedImageUrl, onCl
     <div className="w-full mx-auto flex flex-col items-center">
       {currentImage && (
         <div className="relative w-full max-w-[1000px] h-[600px] flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden border-2 border-gray-200">
-          <AnimationBeforeAfter
-            beforeImgPath={originalImageUrl}
-            afterImgPath={currentImage}
-            className="w-full h-full"
-          />
+          <div className="mx-auto overflow-hidden rounded-lg shadow-2xl h-full w-fit flex items-center justify-center">
+            <AnimationBeforeAfter
+              beforeImgPath={originalImageUrl}
+              afterImgPath={currentImage}
+              className="h-full w-auto object-contain"
+            />
+          </div>
           <button
             onClick={onClose}
             className="cursor-pointer absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors z-20"
