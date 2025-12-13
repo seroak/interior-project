@@ -29,19 +29,19 @@ export const useStyleOptions = create<StyleOptionsState>((set) => ({
   styleOptions: [
     {
       title: "Minimalist",
-      description: "직선과 미니멀한 색감으로 구성된 세련되고 깔끔한 분위기",
+      description: "불필요한 요소를 배제하고 단순한 형태와 여백을 강조한 깔끔하고 절제된 스타일",
     },
     {
       title: "Scandinavian",
-      description: "직선과 미니멀한 색감으로 구성된 세련되고 깔끔한 분위기",
+      description: "밝은 원목과 화이트 톤을 중심으로 자연 채광과 따뜻함을 더한 편안하고 아늑한 스타일",
     },
     {
       title: "Modern",
-      description: "직선과 미니멀한 색감으로 구성된 세련되고 깔끔한 분위기",
+      description: "대담한 직선과 모던한 소재를 활용해 세련되고 기능적인 공간을 만드는 스타일",
     },
     {
       title: "Vintage",
-      description: "과거의 감성과 낡은 질감을 현대적으로 재해석한 개성 있는 스타일",
+      description: "과거의 감성과 낡은 질감을 현대적으로 재해석한 개성 있고 따뜻한 분위기의 스타일",
     },
   ],
   selectedStyleTitle: "Minimalist",

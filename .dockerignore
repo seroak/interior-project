@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.github
+.vscode
+
+build-storybook.log
+coverage
+test-results
+.env
+.env.local
+.DS_Store
+README.md
