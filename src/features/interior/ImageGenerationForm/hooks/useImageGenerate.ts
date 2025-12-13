@@ -1,6 +1,6 @@
 // import type { GeneratedImageResultProps } from "@/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 interface GeneratedImage {
   styleId: string;
   image: string;
@@ -46,14 +46,18 @@ export const useImageGenerate = () => {
     },
   });
 
-  const { data: generatedImageUrls, isLoading: isFetchingImages } = useQuery({
+  const {
+    data: generatedImageUrls,
+    isLoading: isFetchingImages,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ["fetchingImages", genteratedImages],
 
     enabled: !!genteratedImages && genteratedImages.length > 0,
 
     queryFn: async () => {
       if (!genteratedImages) return {};
-      console.log(genteratedImages);
       const promises = genteratedImages.map(async (genteratedImage) => {
         const res = await fetch(`http://open.vulcan.site:8001/api/images/${genteratedImage.image}`);
         if (!res.ok) throw new Error(`Fetch failed for ${genteratedImage.image}`);
@@ -65,11 +69,15 @@ export const useImageGenerate = () => {
       });
 
       const results = await Promise.all(promises);
-
       return Object.fromEntries(results);
     },
   });
-
+  useEffect(() => {
+    if (isError) {
+      console.error(error);
+      alert("이미지 변환 실패 다시 시도 해주세요");
+    }
+  }, [isError, error]);
   const handleImageSelect = (file: File) => {
     setSelectedFile(file);
     const url = URL.createObjectURL(file);
