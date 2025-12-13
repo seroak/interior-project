@@ -8,16 +8,6 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div className="w-full h-full bg-white">
-      <button
-        onClick={async () => {
-          const response = await fetch("http://open.vulcan.site:8001/health", {
-            method: "GET",
-          });
-          console.log(response);
-        }}
-      >
-        실행
-      </button>
       <div className="flex flex-col flex-1 items-center w-full max-w-[1920px] min-w-[1000px] bg-white mx-auto">
         <TopFeatureSection />
         <div className="w-full bg-white flex flex-col items-center py-[100px] px-[192px] gap-[70px]">
