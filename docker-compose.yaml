@@ -5,5 +5,5 @@ services:
       dockerfile: Dockerfile
     container_name: interior-project-fe
     ports:
-      - "8009:8009"
+      - "8009:8000"
     restart: always
