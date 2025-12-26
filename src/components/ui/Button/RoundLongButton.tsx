@@ -3,7 +3,7 @@ interface RoundLongButtonProps {
   onClick: React.MouseEventHandler<HTMLDivElement>;
   disabled?: boolean;
 }
-const RoundLongButton = ({ title, onClick, disabled }: RoundLongButtonProps) => {
+export const RoundLongButton = ({ title, onClick, disabled }: RoundLongButtonProps) => {
   return (
     <div
       onClick={disabled ? undefined : onClick}
@@ -15,5 +15,3 @@ const RoundLongButton = ({ title, onClick, disabled }: RoundLongButtonProps) => 
     </div>
   );
 };
-
-export default RoundLongButton;

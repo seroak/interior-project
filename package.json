@@ -11,10 +11,14 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes",
-    "test-storybook": "vitest --project=storybook"
+    "test": "vitest",
+    "test:unit": "vitest --project=unit",
+    "test:storybook": "vitest --project=storybook",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "@react-spring/web": "^10.0.3",
+    "@supabase/supabase-js": "^2.89.0",
     "@tailwindcss/vite": "^4.1.17",
     "@tanstack/react-query": "^5.90.12",
     "@tanstack/react-query-devtools": "^5.91.1",
@@ -36,6 +40,9 @@
     "@storybook/addon-vitest": "^10.1.4",
     "@storybook/react-vite": "^10.1.4",
     "@tanstack/eslint-plugin-query": "^5.91.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
@@ -48,6 +55,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.1.4",
     "globals": "^16.5.0",
+    "jsdom": "^27.3.0",
     "playwright": "^1.56.1",
     "storybook": "^10.1.4",
     "typescript": "~5.9.3",

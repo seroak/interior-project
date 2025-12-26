@@ -14,6 +14,8 @@ export const ImageGenerationForm = () => {
     handleClearImage,
     handleImgGenerate,
     handleCloseResult,
+    handleShareImage,
+    isSharing,
   } = useImageGenerate();
 
   return (
@@ -37,6 +39,8 @@ export const ImageGenerationForm = () => {
                   originalImageUrl={previewUrl ?? ""}
                   generatedImageUrl={generatedImageUrls}
                   onClose={handleCloseResult}
+                  onShare={handleShareImage}
+                  isSharing={isSharing}
                 />
               </motion.div>
             </div>

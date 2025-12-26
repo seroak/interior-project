@@ -1,12 +1,21 @@
+import { RoundButton } from "@/components/ui/Button/RoundButton";
 import AnimationBeforeAfter from "@/components/shared/AnimationBeforeAfter";
 import { useStyleOptions } from "@/store/useStyleOptions";
 interface GeneratedImageResultProps {
   originalImageUrl: string;
   generatedImageUrl: Record<string, string>;
   onClose: () => void;
+  onShare: () => void;
+  isSharing: boolean;
 }
 
-export const GeneratedImageResult = ({ originalImageUrl, generatedImageUrl, onClose }: GeneratedImageResultProps) => {
+export const GeneratedImageResult = ({
+  originalImageUrl,
+  generatedImageUrl,
+  onClose,
+  onShare,
+  isSharing,
+}: GeneratedImageResultProps) => {
   const selectedStyleTitle = useStyleOptions((state) => state.selectedStyleTitle);
   const currentImage = generatedImageUrl[selectedStyleTitle.toLowerCase()];
   return (
@@ -35,6 +44,19 @@ export const GeneratedImageResult = ({ originalImageUrl, generatedImageUrl, onCl
               />
             </svg>
           </button>
+        </div>
+      )}
+      {currentImage && (
+        <div className="mt-6">
+          <RoundButton
+            onClick={onShare}
+            disabled={isSharing}
+            isLoading={isSharing}
+            iconPath={"/photo-upload.svg"}
+            alt="share"
+          >
+            {isSharing ? "공유 링크 생성 중..." : "결과 공유하기"}
+          </RoundButton>
         </div>
       )}
     </div>

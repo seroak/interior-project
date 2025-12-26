@@ -1,18 +1,22 @@
-// import type { GeneratedImageResultProps } from "@/types";
+import { saveImageRecord, uploadImageToStorage } from "@/services/imageService";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 interface GeneratedImage {
   styleId: string;
   image: string;
 }
+
 interface GenerateImageResponse {
   generated_image: string;
   style_id: string;
 }
+
 export const useImageGenerate = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [genteratedImages, setgenteratedImages] = useState<GeneratedImage[] | null>(null);
+  const [isSharing, setIsSharing] = useState(false);
 
   const { mutate: generateImage, isPending: isGenerating } = useMutation({
     mutationFn: async (file: File) => {
@@ -72,6 +76,7 @@ export const useImageGenerate = () => {
       return Object.fromEntries(results);
     },
   });
+
   useEffect(() => {
     if (isError) {
       console.error(error);
@@ -107,6 +112,49 @@ export const useImageGenerate = () => {
     setSelectedFile(null);
   };
 
+  const handleShareImage = async () => {
+    if (!generatedImageUrls || !previewUrl) {
+      alert("공유할 이미지가 없습니다.");
+      return;
+    }
+
+    try {
+      setIsSharing(true);
+
+      // 1. Upload Original Image
+      // preview 이미지를 실제 이미지로 변환
+      const originalRes = await fetch(previewUrl);
+      const originalBlob = await originalRes.blob();
+      const originalPublicUrl = await uploadImageToStorage(originalBlob);
+
+      // 2. Upload Generated Images (All 4)
+      const generatedPublicUrls: Record<string, string> = {};
+
+      // 4개 생성된 이미지를 실제 이미지로 변환
+      for (const [styleId, blobUrl] of Object.entries(generatedImageUrls)) {
+        const res = await fetch(blobUrl as string);
+        const blob = await res.blob();
+        const publicUrl = await uploadImageToStorage(blob);
+        generatedPublicUrls[styleId] = publicUrl;
+      }
+
+      // 3. Save to Database
+      const shareId = await saveImageRecord(originalPublicUrl, generatedPublicUrls);
+
+      // 4. Copy Link
+      const shareLink = `${window.location.origin}/share/${shareId}`;
+      await navigator.clipboard.writeText(shareLink);
+      alert("공유 링크가 복사되었습니다!");
+    } catch (err) {
+      console.log("hi");
+      console.log(err);
+      console.error(err);
+      alert("공유하기 실패: " + (err as Error).message);
+    } finally {
+      setIsSharing(false);
+    }
+  };
+
   return {
     generatedImageUrls,
     previewUrl,
@@ -116,5 +164,7 @@ export const useImageGenerate = () => {
     handleClearImage,
     handleImgGenerate,
     handleCloseResult,
+    handleShareImage,
+    isSharing,
   };
 };

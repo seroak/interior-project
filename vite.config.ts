@@ -22,6 +22,9 @@ export default defineConfig({
     },
   },
   test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
     projects: [
       {
         extends: true,
@@ -43,6 +46,13 @@ export default defineConfig({
             ],
           },
           setupFiles: [".storybook/vitest.setup.ts"],
+        },
+      },
+      {
+        test: {
+          name: "unit",
+          include: ["src/**/*.{test,spec}.{ts,tsx}"],
+          exclude: ["src/**/*.stories.{ts,tsx}", "node_modules/**"],
         },
       },
     ],
