@@ -9,7 +9,9 @@ export interface SharedImageRecord {
 }
 
 export const uploadImageToStorage = async (file: Blob): Promise<string> => {
-  const fileName = `${crypto.randomUUID()}.png`;
+  // const fileName = `${crypto.randomUUID()}.png`;
+  // http에서 돌아갈수 있게 변경 https로 변경되면 다시 위에 코드로
+  const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.png`;
   const { error } = await supabase.storage.from("generated-images").upload(fileName, file);
 
   if (error) {

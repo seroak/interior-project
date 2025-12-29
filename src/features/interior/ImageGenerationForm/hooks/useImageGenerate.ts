@@ -150,9 +150,6 @@ export const useImageGenerate = () => {
       await navigator.clipboard.writeText(shareLink);
       alert("공유 링크가 복사되었습니다!");
     } catch (err) {
-      console.log("hi");
-      console.log(err);
-      console.error(err);
       alert("공유하기 실패: " + (err as Error).message);
     } finally {
       setIsSharing(false);
