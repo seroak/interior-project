@@ -17,7 +17,7 @@ export const useImageGenerate = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [genteratedImages, setgenteratedImages] = useState<GeneratedImage[] | null>(null);
   const [isSharing, setIsSharing] = useState(false);
-
+  const [shareLink, setShareLink] = useState<string | null>(null);
   const { mutate: generateImage, isPending: isGenerating } = useMutation({
     mutationFn: async (file: File) => {
       const formData = new FormData();
@@ -113,19 +113,22 @@ export const useImageGenerate = () => {
   };
 
   const handleShareImage = async () => {
-    if (!generatedImageUrls || !previewUrl) {
+    if (!generatedImageUrls || !previewUrl || !selectedFile) {
       alert("공유할 이미지가 없습니다.");
       return;
     }
 
     try {
+      if (!selectedFile) {
+        alert("이미지를 먼저 업로드해주세요.");
+        return;
+      }
       setIsSharing(true);
 
       // 1. Upload Original Image
       // preview 이미지를 실제 이미지로 변환
-      const originalRes = await fetch(previewUrl);
-      const originalBlob = await originalRes.blob();
-      const originalPublicUrl = await uploadImageToStorage(originalBlob);
+
+      const originalPublicUrl = await uploadImageToStorage(selectedFile);
 
       // 2. Upload Generated Images (All 4)
       const generatedPublicUrls: Record<string, string> = {};
@@ -143,6 +146,7 @@ export const useImageGenerate = () => {
 
       // 4. Copy Link
       const shareLink = `${window.location.origin}/share/${shareId}`;
+      setShareLink(shareLink);
       await navigator.clipboard.writeText(shareLink);
       alert("공유 링크가 복사되었습니다!");
     } catch (err) {
@@ -166,5 +170,6 @@ export const useImageGenerate = () => {
     handleCloseResult,
     handleShareImage,
     isSharing,
+    shareLink,
   };
 };

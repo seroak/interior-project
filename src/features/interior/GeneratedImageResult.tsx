@@ -1,12 +1,14 @@
 import { RoundButton } from "@/components/ui/Button/RoundButton";
 import AnimationBeforeAfter from "@/components/shared/AnimationBeforeAfter";
 import { useStyleOptions } from "@/store/useStyleOptions";
+import { CopyLinkBox } from "@/components/shared";
 interface GeneratedImageResultProps {
   originalImageUrl: string;
   generatedImageUrl: Record<string, string>;
   onClose: () => void;
   onShare: () => void;
   isSharing: boolean;
+  shareLink: string | null;
 }
 
 export const GeneratedImageResult = ({
@@ -15,6 +17,7 @@ export const GeneratedImageResult = ({
   onClose,
   onShare,
   isSharing,
+  shareLink,
 }: GeneratedImageResultProps) => {
   const selectedStyleTitle = useStyleOptions((state) => state.selectedStyleTitle);
   const currentImage = generatedImageUrl[selectedStyleTitle.toLowerCase()];
@@ -57,6 +60,11 @@ export const GeneratedImageResult = ({
           >
             {isSharing ? "공유 링크 생성 중..." : "결과 공유하기"}
           </RoundButton>
+        </div>
+      )}
+      {shareLink && (
+        <div className="mt-6 w-full max-w-md animate-in fade-in slide-in-from-bottom-2">
+          <CopyLinkBox url={shareLink} />
         </div>
       )}
     </div>
