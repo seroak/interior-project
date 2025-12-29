@@ -7,7 +7,7 @@ dist
 build-storybook.log
 coverage
 test-results
-.env
-.env.local
+# .env
+# .env.local
 .DS_Store
 README.md
