@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/Input";
 import { useLogin } from "./hooks/useLogin";
 import { OAuthButton } from "@/components/auth/OAuthButton";
@@ -8,7 +8,6 @@ export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isPending, error, clearError } = useLogin();
-  const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     clearError();

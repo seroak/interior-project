@@ -1,45 +1,16 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import { Component, type ErrorInfo, type ReactNode } from "react";
 
-/**
- * 에러 바운더리 Props
- */
 interface ErrorBoundaryProps {
-  /**
-   * 에러 발생 시 렌더링할 대체 UI
-   */
   fallback?: ReactNode;
-  /**
-   * 에러 발생 시 실행할 콜백
-   */
   onError?: (error: Error, errorInfo: ErrorInfo) => void;
-  /**
-   * 자식 컴포넌트
-   */
   children: ReactNode;
 }
 
-/**
- * 에러 바운더리 State
- */
 interface ErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
 }
 
-/**
- * 전역 에러 바운더리 컴포넌트
- * React 컴포넌트 트리에서 발생하는 에러를 캐치하고 사용자에게 친화적인 에러 UI를 표시합니다.
- *
- * @example
- * ```tsx
- * <ErrorBoundary
- *   fallback={<div>에러가 발생했습니다.</div>}
- *   onError={(error, errorInfo) => console.error(error, errorInfo)}
- * >
- *   <App />
- * </ErrorBoundary>
- * ```
- */
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);

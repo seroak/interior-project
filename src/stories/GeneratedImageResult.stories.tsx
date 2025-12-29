@@ -23,6 +23,9 @@ const meta = {
       vintage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
     },
     onClose: fn(),
+    onShare: fn(),
+    isSharing: false,
+    shareLink: null,
   },
 } satisfies Meta<typeof GeneratedImageResult>;
 
