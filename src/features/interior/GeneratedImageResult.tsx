@@ -6,7 +6,7 @@ interface GeneratedImageResultProps {
   originalImageUrl: string;
   generatedImageUrl: Record<string, string>;
   onClose: () => void;
-  onShare: () => void;
+  // onShare: () => void;
   onShareCloudflare: () => void;
   isSharing: boolean;
   shareLink: string | null;
