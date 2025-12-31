@@ -15,6 +15,7 @@ export const ImageGenerationForm = () => {
     handleImgGenerate,
     handleCloseResult,
     handleShareImage,
+    handleShareImageCloudflare,
     isSharing,
     shareLink,
   } = useImageGenerate();
@@ -41,6 +42,7 @@ export const ImageGenerationForm = () => {
                   generatedImageUrl={generatedImageUrls}
                   onClose={handleCloseResult}
                   onShare={handleShareImage}
+                  onShareCloudflare={handleShareImageCloudflare}
                   isSharing={isSharing}
                   shareLink={shareLink}
                 />

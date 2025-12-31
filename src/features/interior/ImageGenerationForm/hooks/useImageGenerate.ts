@@ -1,4 +1,9 @@
-import { saveImageRecord, uploadImageToStorage } from "@/services/imageService";
+import {
+  saveImageRecord,
+  uploadImageToStorage,
+  uploadImageToStorageCloudflare,
+  saveImageRecordCloudflare,
+} from "@/services/imageService";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
@@ -125,26 +130,78 @@ export const useImageGenerate = () => {
       }
       setIsSharing(true);
 
-      // 1. Upload Original Image
-      // preview 이미지를 실제 이미지로 변환
+      // 1. Upload All Images in Parallel (Original + 4 Generated)
+      // 원본 이미지 업로드 태스크
+      const originalUploadPromise = uploadImageToStorage(selectedFile);
 
-      const originalPublicUrl = await uploadImageToStorage(selectedFile);
-
-      // 2. Upload Generated Images (All 4)
-      const generatedPublicUrls: Record<string, string> = {};
-
-      // 4개 생성된 이미지를 실제 이미지로 변환
-      for (const [styleId, blobUrl] of Object.entries(generatedImageUrls)) {
+      // 생성된 이미지 업로드 태스크들 준비
+      const generatedUploadPromises = Object.entries(generatedImageUrls).map(async ([styleId, blobUrl]) => {
         const res = await fetch(blobUrl as string);
         const blob = await res.blob();
         const publicUrl = await uploadImageToStorage(blob);
-        generatedPublicUrls[styleId] = publicUrl;
-      }
+        return { styleId, publicUrl };
+      });
 
-      // 3. Save to Database
+      const [originalPublicUrl, ...generatedResults] = await Promise.all([
+        originalUploadPromise,
+        ...generatedUploadPromises,
+      ]);
+
+      const generatedPublicUrls: Record<string, string> = {};
+      generatedResults.forEach((result) => {
+        generatedPublicUrls[result.styleId] = result.publicUrl;
+      });
+
       const shareId = await saveImageRecord(originalPublicUrl, generatedPublicUrls);
 
-      // 4. Copy Link
+      const shareLink = `${window.location.origin}/share/${shareId}`;
+      setShareLink(shareLink);
+      await navigator.clipboard.writeText(shareLink);
+      alert("공유 링크가 복사되었습니다!");
+    } catch (err) {
+      alert("공유하기 실패: " + (err as Error).message);
+    } finally {
+      setIsSharing(false);
+    }
+  };
+
+  const handleShareImageCloudflare = async () => {
+    if (!generatedImageUrls || !previewUrl || !selectedFile) {
+      alert("공유할 이미지가 없습니다.");
+      return;
+    }
+
+    try {
+      if (!selectedFile) {
+        alert("이미지를 먼저 업로드해주세요.");
+        return;
+      }
+      setIsSharing(true);
+
+      // 1. Upload All Images in Parallel (Original + 4 Generated)
+      // 원본 이미지 업로드 태스크
+      const originalUploadPromise = uploadImageToStorageCloudflare(selectedFile);
+
+      // 생성된 이미지 업로드 태스크들 준비
+      const generatedUploadPromises = Object.entries(generatedImageUrls).map(async ([styleId, blobUrl]) => {
+        const res = await fetch(blobUrl as string);
+        const blob = await res.blob();
+        const publicUrl = await uploadImageToStorageCloudflare(blob);
+        return { styleId, publicUrl };
+      });
+
+      const [originalPublicUrl, ...generatedResults] = await Promise.all([
+        originalUploadPromise,
+        ...generatedUploadPromises,
+      ]);
+
+      const generatedPublicUrls: Record<string, string> = {};
+      generatedResults.forEach((result) => {
+        generatedPublicUrls[result.styleId] = result.publicUrl;
+      });
+
+      const shareId = await saveImageRecordCloudflare(originalPublicUrl, generatedPublicUrls);
+
       const shareLink = `${window.location.origin}/share/${shareId}`;
       setShareLink(shareLink);
       await navigator.clipboard.writeText(shareLink);
@@ -166,6 +223,7 @@ export const useImageGenerate = () => {
     handleImgGenerate,
     handleCloseResult,
     handleShareImage,
+    handleShareImageCloudflare,
     isSharing,
     shareLink,
   };

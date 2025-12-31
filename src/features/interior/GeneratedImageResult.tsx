@@ -7,6 +7,7 @@ interface GeneratedImageResultProps {
   generatedImageUrl: Record<string, string>;
   onClose: () => void;
   onShare: () => void;
+  onShareCloudflare: () => void;
   isSharing: boolean;
   shareLink: string | null;
 }
@@ -15,7 +16,8 @@ export const GeneratedImageResult = ({
   originalImageUrl,
   generatedImageUrl,
   onClose,
-  onShare,
+  // onShare,
+  onShareCloudflare,
   isSharing,
   shareLink,
 }: GeneratedImageResultProps) => {
@@ -51,8 +53,17 @@ export const GeneratedImageResult = ({
       )}
       {currentImage && (
         <div className="mt-6">
-          <RoundButton
+          {/* <RoundButton
             onClick={onShare}
+            disabled={isSharing}
+            isLoading={isSharing}
+            iconPath={"/photo-upload.svg"}
+            alt="share"
+          >
+            {isSharing ? "공유 링크 생성 중..." : "결과 공유하기"}
+          </RoundButton> */}
+          <RoundButton
+            onClick={onShareCloudflare}
             disabled={isSharing}
             isLoading={isSharing}
             iconPath={"/photo-upload.svg"}
